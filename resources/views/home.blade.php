@@ -15,6 +15,8 @@
                     @endif
 
                     You are logged in!
+                    <a href="/categories" class="btn btn-primary">Categories</a>
+                    <a href="/categories/create" class="btn btn-primary">Add Category</a>
                 </div>
             </div>
         </div>
