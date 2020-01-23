@@ -1,29 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Categories</div>
+<div class="d-flex justify-content-end mb-2">
+    <a href="{{ route('categories.create') }}" class="btn btn-success">Add Category</a>
+</div>
 
-                <div class="card-body">
-                    <ul class="list-group">
-                        
-                        @foreach ($categories as $category)
-                            <li class="list-group-item">{{ $category->name }}
-                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info btn-sm">
-                                    Edit
-                                  </a>
-                                  <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $category->id }})">Delete</button>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        </div>
+<div class="card">
+    <div class="card-header">Categories</div>
+
+    <div class="card-body">
+        <ul class="list-group">
+            
+            @foreach ($categories as $category)
+                <li class="list-group-item">{{ $category->name }}
+                    <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info btn-sm">
+                        Edit
+                        </a>
+                        <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $category->id }})">Delete</button>
+                </li>
+            @endforeach
+        </ul>
     </div>
 </div>
+
 
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

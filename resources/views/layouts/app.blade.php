@@ -24,17 +24,13 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'CMS') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -73,7 +69,32 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            @auth
+              <div class="container">
+                  @if(session()->has('success'))
+                    <div class="alert alert-success">
+                      {{ session()->get('success') }}
+                    </div>
+                  @endif
+                  <div class="row">
+                    <div class="col-md-4">
+                      <ul class="list-group">
+                        <li class="list-group-item">
+                          <a href="{{ route('posts.index') }}">Posts</a>
+                        </li>
+                        <li class="list-group-item">
+                          <a href="{{ route('categories.index') }}">Categories</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-md-8">
+                        @yield('content')
+                    </div>
+                  </div>
+              </div>
+            @else
+              @yield('content')
+            @endauth
         </main>
     </div>
 
