@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('posts', 'PostContller');
 Route::resource('categories', 'CategoryController');
+
+Route::get('/trashed-posts','PostContller@trashed')->name('trashed-posts.index');
